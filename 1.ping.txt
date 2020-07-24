@@ -1,0 +1,90 @@
+To create a chat like environment, and can keep a character/word to end the chat. At the end
+of the chat, the application should be able to answer 3 types of questions.
+
+import java.util.*;
+
+class Main{
+   
+ public static void main(String args[]){
+   
+     Scanner sc=new Scanner(System.in);
+ 
+     String n="";
+
+     ArrayList<String> al=new ArrayList<String>();
+ 
+     n=sc.nextLine();
+    
+        
+     String str[]=n.split(" ");
+
+     for(int i=0;i<str.length;i++){
+
+       if(str[i].equals("quit")){
+ 
+          break;
+       
+	}
+  
+     else{
+ 
+       al.add(str[i]);
+       
+     }
+ 
+   }
+    
+   Map<String, Integer> hm = new HashMap<String, Integer>();
+ 
+        for (String i : al) {
+ 
+            Integer j = hm.get(i);
+ 
+            hm.put(i, (j == null) ? 1 : j + 1);
+ 
+        } 
+
+         for (Map.Entry<String, Integer> val : hm.entrySet()) {
+ 
+            System.out.println("Element " + val.getKey() + " "+ "occurs"+ ": " + val.getValue() + " times");
+ 
+        }
+     
+    for (String s1 : al) {
+ 
+         int count[]=new int[256];
+ 
+          int len=s1.length();
+
+         for (int i = 0; i < len; i++)
+ 
+            count[s1.charAt(i)]++;
+ 
+        char ch[] = new char[s1.length()];
+ 
+        for (int i = 0; i < len; i++) {
+ 
+            ch[i] = s1.charAt(i);
+
+             int find = 0;
+ 
+            for (int j = 0; j <= i; j++) {
+ 
+                if (s1.charAt(i) == ch[j])
+  
+                    find++;
+             }
+
+             if (find == 1)
+  
+                System.out.println("Number of Occurrence of " +s1.charAt(i) + " is:" + count[s1.charAt(i)]); 
+     
+    }
+
+      } 
+    
+      System.out.println(al.size());
+
+    }
+
+}
